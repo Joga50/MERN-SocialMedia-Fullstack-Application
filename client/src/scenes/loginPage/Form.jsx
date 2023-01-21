@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   Box,
   Button,
@@ -8,18 +7,12 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
-
 import * as yup from "yup";
-
 import { useNavigate } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
-
 import { setLogin } from "state";
-
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 
@@ -63,7 +56,7 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
-    //  this allows us to send form info with image
+    // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -108,6 +101,7 @@ const Form = () => {
     if (isLogin) await login(values, onSubmitProps);
     if (isRegister) await register(values, onSubmitProps);
   };
+
   return (
     <Formik
       onSubmit={handleFormSubmit}
@@ -183,10 +177,10 @@ const Form = () => {
                   gridColumn="span 4"
                   border={`1px solid ${palette.neutral.medium}`}
                   borderRadius="5px"
-                  p="1rm"
+                  p="1rem"
                 >
                   <Dropzone
-                    acceptedFiles=".jpg, .jpeg, .png"
+                    acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
                     onDrop={(acceptedFiles) =>
                       setFieldValue("picture", acceptedFiles[0])
@@ -200,9 +194,8 @@ const Form = () => {
                         sx={{ "&:hover": { cursor: "pointer" } }}
                       >
                         <input {...getInputProps()} />
-
                         {!values.picture ? (
-                          <p>Add Picture here</p>
+                          <p>Add Picture Here</p>
                         ) : (
                           <FlexBetween>
                             <Typography>{values.picture.name}</Typography>
@@ -226,9 +219,9 @@ const Form = () => {
               helperText={touched.email && errors.email}
               sx={{ gridColumn: "span 4" }}
             />
-
             <TextField
               label="Password"
+              type="password"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
@@ -239,8 +232,7 @@ const Form = () => {
             />
           </Box>
 
-          {/* BUTTONS  */}
-
+          {/* BUTTONS */}
           <Box>
             <Button
               fullWidth
@@ -261,16 +253,16 @@ const Form = () => {
                 resetForm();
               }}
               sx={{
-                textDecotation: "underline",
+                textDecoration: "underline",
                 color: palette.primary.main,
                 "&:hover": {
-                  cursos: "pointer",
+                  cursor: "pointer",
                   color: palette.primary.light,
                 },
               }}
             >
               {isLogin
-                ? "Dont have an account ? Sign Up here."
+                ? "Don't have an account? Sign Up here."
                 : "Already have an account? Login here."}
             </Typography>
           </Box>
