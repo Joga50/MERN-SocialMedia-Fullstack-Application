@@ -89,7 +89,7 @@ const MyPostWidget = ({ picturePath }) => {
           <Dropzone
             acceptedFiles=".jpg,.jpeg,.png"
             multiple={false}
-            onDrop={(acceptedFiles) => setImage("picture", acceptedFiles[0])}
+            onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
           >
             {({ getRootProps, getInputProps }) => (
               <FlexBetween>
@@ -101,7 +101,7 @@ const MyPostWidget = ({ picturePath }) => {
                   sx={{ "&:hover": { cursor: "pointer" } }}
                 >
                   <input {...getInputProps()} />
-                  {!image.picture ? (
+                  {!image ? (
                     <p>Add Image</p>
                   ) : (
                     <FlexBetween>
@@ -115,7 +115,7 @@ const MyPostWidget = ({ picturePath }) => {
                     onClick={() => setImage(null)}
                     sx={{ width: "15%" }}
                   >
-                    <DeleteOutlined></DeleteOutlined>
+                    <DeleteOutlined />
                   </IconButton>
                 )}
               </FlexBetween>
@@ -123,10 +123,10 @@ const MyPostWidget = ({ picturePath }) => {
           </Dropzone>
         </Box>
       )}
-      <Divider sx={{ margin: "1.25rem" }} />
+      <Divider sx={{ margin: "1.25rem 0" }} />
 
       <FlexBetween>
-        <FlexBetween gap="0.25rem" onClick={() => setImage(!isImage)}>
+        <FlexBetween gap="0.25rem" onClick={() => setIsImage(!isImage)}>
           <ImageOutlined sx={{ color: mediumMain }} />
           <Typography
             color={mediumMain}
@@ -143,7 +143,7 @@ const MyPostWidget = ({ picturePath }) => {
             </FlexBetween>
             <FlexBetween gap="0.25rem">
               <AttachFileOutlined sx={{ color: mediumMain }} />
-              <Typography color={mediumMain}>Attach</Typography>
+              <Typography color={mediumMain}>Attachment</Typography>
             </FlexBetween>
             <FlexBetween gap="0.25rem">
               <MicOutlined sx={{ color: mediumMain }} />

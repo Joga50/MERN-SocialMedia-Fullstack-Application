@@ -31,9 +31,7 @@ const NavBar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const user = useSelector((state) => state.user);
-
-  const user = { firstName: "Soy-femina", lastName: "femenina" };
+  const user = useSelector((state) => state.user);
 
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
